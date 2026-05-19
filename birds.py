@@ -1,6 +1,7 @@
 import streamlit as st
 import random
 import time
+import os
 
 
 st.title("cock cock czy potrafisz zgadnac co to za ptactwo?")
@@ -27,7 +28,8 @@ if "wylosowany_ptak" not in st.session_state:
     st.session_state.wylosowany_ptak = random.choice(st.session_state.pula_ptakow)
     st.session_state.proby = 3
 
-sciezka_do_audio = f"assets/{st.session_state.wylosowany_ptak}.mp3"
+folder_glowny = os.path.dirname(__file__)
+sciezka_do_audio = os.path.join(folder_glowny, "assets", f"{st.session_state.wylosowany_ptak}.mp3")
 
 with open(sciezka_do_audio, "rb") as audio_file:  #read binary
     st.audio(audio_file.read(), format = "audio/mp3")
