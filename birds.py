@@ -29,10 +29,8 @@ if "wylosowany_ptak" not in st.session_state:
     st.session_state.proby = 3
 
 folder_glowny = os.path.dirname(__file__)
-sciezka_do_audio = os.path.join(folder_glowny, "assets", f"{st.session_state.wylosowany_ptak}.mp3")
 
-with open(sciezka_do_audio, "rb") as audio_file:  #read binary
-    st.audio(audio_file.read(), format = "audio/mp3")
+st.audio(f"assets/{st.session_state.wylosowany_ptak}.mp3", format="audio/mp3")
 
 
 for i in range(0, len(ptaki), 5):
